@@ -8,6 +8,16 @@ Redux Store:
     > Handles unregistering of listeners via the function returned by subscriber(listener)
 
 
+# Multiple Reducers & combineReducers
+
 + It is good to maintain multiple reducers for handling different scenarios(cakes, ice-creams, etc..)
 + Also it is good to maintain separate state
 + Redux provide combineReducers to combine multiple reducers
+
+
+# Middleware
+
++ A suggested way to extend Redux with custom functionality
++ Provides a third-party extension point between dispatching an action & at the moment it reaches the reducer
++ Use middleware for logging, crash reporting, performing asynchronous tasks etc..
++ redux-logger is package for middleware 
