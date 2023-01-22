@@ -20,4 +20,33 @@ Redux Store:
 + A suggested way to extend Redux with custom functionality
 + Provides a third-party extension point between dispatching an action & at the moment it reaches the reducer
 + Use middleware for logging, crash reporting, performing asynchronous tasks etc..
-+ redux-logger is package for middleware 
++ redux-logger is package for middleware
+
+
+# async-actions
+
++ Fetch a list of users from API endpoint and store it in redux store
+    State ?
+    Actions ?
+    Reducer ?
++ For Any Data fetching typically, state contains 3 properties
+    state = {
+        loading: bool, // display loading spinner in component
+        data: [], // List of users
+        error: '' // display error to user
+    }
+
+    Actions
+    FETCH_USERS_REQUEST --> Fetch list of users
+    FETCH_USERS_SUCCESS --> Fetched successfully
+    FETCH_USERS_FAILURE --> Error fetching the data
+
+    Reducers
+    case: FETCH_USERS_REQUEST
+        loading: true
+    case: FETCH_USERS_SUCCESS
+        loading: false
+        data: users(from API)
+    case: FETCH_USERS_FAILURE
+        loading: false
+        error: error(from API)
