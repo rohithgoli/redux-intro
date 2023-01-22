@@ -50,3 +50,14 @@ Redux Store:
     case: FETCH_USERS_FAILURE
         loading: false
         error: error(from API)
+
+
+# async action creators
++ action creation with Network request  i.e How to Make an API call when working with Redux
++ axios --> Requests to an API endpoint
+  redux-thunk --> Define async action creators
+                  Middleware
++ using thunkMiddleware, gives ability for action creator to return function instead of object
+    thereby enabling to perform sideffects such as asynchronous tasks
+    & functions can also perform regular actions, which can be handled by reducer
+    
