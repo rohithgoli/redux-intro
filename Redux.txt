@@ -1,3 +1,61 @@
+Redux:
++ A predictable state container for Javascript applications.
++ Redux, a library, can be used with React, Angular, Vue or even vanilla Javascript
++ State of an app is the state represented by all the individual components of that app
+    (This includes the data & the UI logic)
++ Redux will store and manage the application state
+
++ Q: Why to use redux in react app ? As we know Components in React have their own state, so what
+    is the need of another tool to help manage the state ?
+    Alternatives are:
+        -> React context - Prevents prop drilling
+        -> useContext + useReducer 
+        Redux is available since 2015
++ React-Redux is the official Redux UI binding library for React
+
+
+# 3-Core concepts:
+    + Store - Holds the state of your application - Shop
+    + Action - Describes what happened(describes the changes in the state of appln) - Intention to BUY_CAKE
+    + Reducer - Ties the store and actions together(which actually carries out state transition
+                depending on the action) - Shopkeeper
+
+# 3-Principles of Redux pattern
++ The state of your whole application is stored in an object tree within a single store
+    i.e Maintain application state in a single object which would be managed by Redux store
++ The only way to change the state is to emit an action, an object describing what happened
+    i.e To update the state of your app, you need to let Redux know about that with an action
+        Not allowed to directly update the state object
+    eg: {
+            type: 'BUY_CAKE'
+        }
++ To specify how the state tree is transformed by actions, you write pure reducers
+    Reducer - (prevState, action) => newState
+    eg: 
+        const reducer = (state, action) => {
+            switch(action.type) {
+                case BUY_CAKE:
+                    return {
+                        numOfCakes: state.numOfCakes - 1 
+                    }
+            }
+        }
+
+
+# Actions
++ The only way your appln can interact with the store
++ Carry some info. from your app to the redux store
++ plain js objects
++ Have a type property that indicates the type of action being performed
++ The type proerty is typically defined as string constants
++ Action Creator are function that returns the action
+
+
+# Reducers
++ Specify how the app's state changes in response to actions sent to store
++ are functions that accept state and action as agruments, and returns the next state of appln
+
+
 Redux Store:
 + One store for the entire application
 + Responsibilities are:
@@ -8,12 +66,27 @@ Redux Store:
     > Handles unregistering of listeners via the function returned by subscriber(listener)
 
 
+# Redux pattern
+    1) Create a store
+    2) Declare InitialState and Reducer
+    3) Define action types and action creators
+    4) subscribe to store
+    5) Dispatch actions to update the store
+    6) Unsubscribe to updates from store 
+
+
 # Multiple Reducers & combineReducers
 
 + It is good to maintain multiple reducers for handling different scenarios(cakes, ice-creams, etc..)
 + Also it is good to maintain separate state
 + Redux provide combineReducers to combine multiple reducers
 
+    Thus 
+        + Each of the reducers is managing its own part of Global state
+            The state parameter is different for every reducer & corresponds to the part of the state it manages
+
+        + When appln grows in size, keep the reducers in separate files & keep them 
+            completely independant in managing different areas
 
 # Middleware
 
